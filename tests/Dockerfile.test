@@ -1,0 +1,11 @@
+FROM --platform=linux/amd64 node:latest
+
+RUN apt update
+
+# aws
+RUN apt install -y unzip
+RUN curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
+RUN ./aws/install && aws --version
+
+RUN echo "aws codeartifact login --tool npm --repository cyferd-common --namespace @cyferd --domain cyferd --region=eu-central-1" >> /awslogin
+RUN chmod +x /awslogin

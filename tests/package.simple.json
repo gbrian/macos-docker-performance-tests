@@ -1,0 +1,61 @@
+{
+  "name": "cyferd-dev",
+  "version": "1.3.1",
+  "description": "Cyferd developer environment",
+  "main": "index.js",
+  "scripts": {
+    "start": "make start-docker && make start-services && make stop-services",
+    "mock": "nodemon src/ws-mock",
+    "test:mocks": "jest mocks/",
+    "test": "make start-e2e; jest --testPathIgnorePatterns mocks --testPathPattern $npm_config_pattern; status=$?; make stop-e2e; exit $status",
+    "eslint": "eslint .",
+    "eslint-fix": "eslint . --fix",
+    "prepare": "if [ -z $CI ] || [ $CI -eq 0 ]; then husky install .github/githooks; else exit 0; fi",
+    "format": "dev-utils format",
+    "lint": "dev-utils lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyferd/cyferd-dev.git"
+  },
+  "devUtils": {
+    "type": "library",
+    "disableLintRules": [
+      "global-require"
+    ]
+  },
+  "jest": {
+    "rootDir": "./",
+    "roots": [
+      "<rootDir>/mocks",
+      "<rootDir>/__tests__"
+    ],
+    "testMatch": [
+      "**.test.js"
+    ],
+    "globalSetup": "<rootDir>/__tests__/src/globalSetup.js",
+    "testEnvironment": "<rootDir>/__tests__/src/e2eEnvironment.js",
+    "setupFiles": [
+      "<rootDir>/__tests__/src/dotenv.js"
+    ],
+    "globalTeardown": "<rootDir>/__tests__/src/globalTeardown.js"
+  },
+  "author": "Nacho Bibián",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cyferd/cyferd-dev/issues"
+  },
+  "homepage": "https://github.com/Cyferd/cyferd-dev#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "nodemon": "2.0.12",
+    "ws": "7.4.6"
+  },
+  "devDependencies": {
+    "dotenv": "10.0.0",
+    "jest": "27.0.6",
+    "jest-environment-node": "27.2.4",
+    "pm2": "5.1.0",
+    "yarn": "1.22.11"
+  }
+}
