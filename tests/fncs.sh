@@ -2,7 +2,7 @@
 function timeit () {
     echo "Start test"
     start_time=$SECONDS
-    $1
+    $1 || :
     elapsed=$(( SECONDS - start_time ))
     echo ""
     echo "*** Test time taken: $elapsed"

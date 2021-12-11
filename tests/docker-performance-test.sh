@@ -59,4 +59,4 @@ function docker_build_no_mount_simple () {
     docker rm -f docker_build_no_mount_simple || :
 }
 
-"$TEST"
+timeit "$TEST"
