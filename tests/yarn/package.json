@@ -10,7 +10,6 @@
     "test": "make start-e2e; jest --testPathIgnorePatterns mocks --testPathPattern $npm_config_pattern; status=$?; make stop-e2e; exit $status",
     "eslint": "eslint .",
     "eslint-fix": "eslint . --fix",
-    "prepare": "if [ -z $CI ] || [ $CI -eq 0 ]; then husky install .github/githooks; else exit 0; fi",
     "format": "dev-utils format",
     "lint": "dev-utils lint"
   },

@@ -1,0 +1,9 @@
+# Change to map your local node version
+FROM --platform=linux/amd64 node:17
+
+RUN mkdir /src
+WORKDIR /src
+
+COPY . /src
+RUN chmod +x /src/entrypoint.sh
+ENTRYPOINT /src/entrypoint.sh

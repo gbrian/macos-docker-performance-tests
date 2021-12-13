@@ -5,7 +5,7 @@
     "autoDownloadUpdates": false,
     "autoStart": false,
     "backupData": false,
-    "cpus": 4,
+    "cpus": 2,
     "credentialHelper": "docker-credential-osxkeychain",
     "dataFolder": "~/Library/Containers/com.docker.docker/Data/vms/0/data",
     "disableHardwareAcceleration": false,
